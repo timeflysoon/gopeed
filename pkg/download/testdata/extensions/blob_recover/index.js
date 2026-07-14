@@ -40,7 +40,7 @@ gopeed.events.onError(async function (ctx) {
         return;
     }
 
-    req.labels.recovered = "true";
-    req.url = gopeed.runtime.blob.createObjectURL(new Blob(["ok\n"], { type: "text/plain" }));
+    req.putLabel("recovered", "true");
+    ctx.task.setUrl(gopeed.runtime.blob.createObjectURL(new Blob(["ok\n"], { type: "text/plain" })));
     ctx.task.continue();
 });
